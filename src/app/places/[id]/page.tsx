@@ -6,7 +6,7 @@ import { supabase } from '@/utils/supabase/supabaseClient';
 import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
 import { Button } from '@/components/ui/button';
 import fontkit from '@pdf-lib/fontkit'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';

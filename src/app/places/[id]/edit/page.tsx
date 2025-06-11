@@ -1,6 +1,6 @@
 'use client'
 
-import PlaceForm from '@/components/CreatePlaceForm'
+import PlaceForm from '@/components/PlaceForm'
 import { useParams } from 'next/navigation'
 import React from 'react'
 

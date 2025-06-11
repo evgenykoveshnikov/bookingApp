@@ -1,4 +1,4 @@
-import CreatePlace from '@/components/CreatePlaceForm'
+import CreatePlace from '@/components/PlaceForm'
 import React from 'react'
 
 export default function createPlace() {
