@@ -149,7 +149,7 @@ export default function PlaceDetails() {
                             height: imgHeight,
                         });
                     }
-                } catch (imageError: err) {
+                } catch (imageError) {
                     toast.error(`Не удалось добавить изображение в PDF: ${imageError.message || 'неизвестная ошибка'}`);
                     console.error('Ошибка при загрузке или встраивании изображения в PDF:', imageError);
                 }
