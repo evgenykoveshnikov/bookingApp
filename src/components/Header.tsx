@@ -1,5 +1,4 @@
 import { User } from "@/types/types";
-import { Session } from '@supabase/supabase-js'
 import { createClient,  } from "@/utils/supabase/supabaseServerClient";
 import Link from "next/link";
 import ButtonProvider from "./ButtonProvider";

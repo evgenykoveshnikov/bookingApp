@@ -3,7 +3,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Place } from '@/types/types'; // Убедитесь, что ваш тип Place определен
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
@@ -47,7 +46,7 @@ interface PlaceFormProps {
 }
 
 export default function PlaceForm({ placeId }: PlaceFormProps) {
-    const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm<z.infer<typeof placeFormSchema>>({
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm<z.infer<typeof placeFormSchema>>({
         resolver: zodResolver(placeFormSchema),
     });
     const [loading, setLoading] = useState(false);
@@ -202,8 +201,11 @@ export default function PlaceForm({ placeId }: PlaceFormProps) {
                      // Перенаправить на список мест
                 }
             }
-        } catch (err: any) {
-            toast.error(`Произошла непредвиденная ошибка: ${err.message}`);
+        } catch (err) {
+            if(err instanceof Error) {
+                toast.error(`Произошла непредвиденная ошибка: ${err.message}`);
+            }
+            
         } 
     };
 

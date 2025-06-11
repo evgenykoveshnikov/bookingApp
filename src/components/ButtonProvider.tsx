@@ -6,7 +6,6 @@ import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/utils/supabase/supabaseClient';
 import Link from 'next/link';
 import { Separator } from './ui/separator';
-import { Session } from '@supabase/supabase-js';
 import { User } from '@/types/types'
 
 interface ButtonProviderProps {

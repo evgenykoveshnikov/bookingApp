@@ -111,6 +111,13 @@ export default function AuthForm() {
             setLoading(false)
         }
     }
+
+    if(loading) {
+        <div className='flex grow justify-center items-center'>
+            <div className='animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500'>
+            </div>
+        </div>
+    }
   return (
     <Card className='w-full max-w-sm'>
         <CardHeader className='text-center'>

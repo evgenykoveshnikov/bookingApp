@@ -1,6 +1,5 @@
 'use client'
 
-import PlaceCard from '@/components/PlaceCard';
 import { Place } from '@/types/types';
 import { supabase } from '@/utils/supabase/supabaseClient';
 import { useParams, useRouter } from 'next/navigation'
@@ -116,7 +115,7 @@ export default function PlaceDetails() {
                         console.warn('Unsupported image format for PDF:', place.imageUrl);
                     }
                     if (embedImage) {
-                        const pageHeight = page.getHeight();
+                        // const pageHeight = page.getHeight();
                         const pageWidth = page.getWidth();
                         const margin = 50; // Отступ по краям
                         const maxImageWidth = pageWidth - (2 * margin); // Максимальная ширина изображения
@@ -150,8 +149,10 @@ export default function PlaceDetails() {
                         });
                     }
                 } catch (imageError) {
-                    toast.error(`Не удалось добавить изображение в PDF: ${imageError.message || 'неизвестная ошибка'}`);
-                    console.error('Ошибка при загрузке или встраивании изображения в PDF:', imageError);
+                    if(imageError instanceof Error) {
+                        toast.error(`Не удалось добавить изображение в PDF: ${imageError.message || 'неизвестная ошибка'}`);
+                        console.error('Ошибка при загрузке или встраивании изображения в PDF:', imageError);
+                    }
                 }
             }
 
@@ -169,13 +170,24 @@ export default function PlaceDetails() {
             URL.revokeObjectURL(url); // Revoke object URL
 
             toast(`Успешно создан и сохранен файл ${link.download}`)
-        } catch(err: any) {
-            toast(`Ошибка создания pdf ${err.message || 'неизвестная ошибка'}`)
+        } catch(err) {
+            if(err instanceof Error) {
+                toast(`Ошибка создания pdf ${err.message || 'неизвестная ошибка'}`)
+            }
         }
     }
 
     const handleEditClick = () => {
         router.push(`/places/${id}/edit`)
+    }
+
+    if(loading) {
+        return (
+            <div className='flex grow justify-center items-center'>
+                <div className='animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500'>
+                </div>
+            </div>
+        )
     }
   return (
     <div className='flex flex-col grow  items-center'>
