@@ -66,25 +66,25 @@
 
 1. Авторизоваться через supabase cli:
    ```bash
-       npx supabase login
+    npx supabase login
    ```
 2. Привязать проект:
    ```bash
-       npx supabase link
+    npx supabase link
    ```
 3. Запушить схему в supabase:
    ```bash
-       npx supabase db push
+    npx supabase db push
    ```
 
 ### Запуск проекта
 
 1. В режиме разработке:
    ```bash
-       npm run dev
+    npm run dev
    ```
 2. В режиме producation:
    ```bash
-       npm run build
-       npm run start
+    npm run build
+    npm run start
    ```
