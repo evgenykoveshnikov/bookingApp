@@ -223,7 +223,7 @@ export default function PlaceDetails() {
                 {isAdmin ? (
                     <Button variant={'default'} size={'lg'} onClick={handleEditClick}>Редактировать</Button>
                 ) : (
-                    <Button variant={'default'} size={'lg'}>Забронировать</Button>
+                    <Button variant={'default'} size={'lg'} onClick={() => toast.success(`Вы успешно забронировали место(СИМУЛЯЦИЯ)`)}>Забронировать</Button>
                 )}
                 <Button variant={'link'} onClick={handleDownloadPdf}>Скачать PDF</Button>
             </CardFooter>
